@@ -182,6 +182,7 @@ function startEdit(li, task) {
   document.getSelection().collapseToEnd();
 
   const finish = (commit) => {
+    el.onblur = null; 
     el.contentEditable = "false";
     const text = el.textContent.trim();
     if (commit && text) task.title = text;
