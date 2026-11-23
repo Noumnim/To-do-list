@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taskflow — Create account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <script src="auth.js"></script>
+  <script>Auth.redirectIfAuthed();</script>
+</head>
+<body class="auth-body">
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <div class="brand auth-brand">
+        <div class="logo">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <span>Taskflow</span>
+      </div>
+
+      <h1 class="auth-title">Create your account</h1>
+      <p class="auth-sub">Start organizing your tasks in seconds.</p>
+
+      <div class="alert" id="form-alert" role="alert" data-testid="register-alert" hidden></div>
+
+      <form id="register-form" class="auth-form" novalidate data-testid="register-form">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Doe" autocomplete="name" maxlength="60" data-testid="register-name" />
+          <p class="field-error" id="name-error" data-testid="register-name-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" data-testid="register-email" />
+          <p class="field-error" id="email-error" data-testid="register-email-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" placeholder="At least 8 characters" autocomplete="new-password" data-testid="register-password" />
+            <button type="button" class="toggle-pw" data-target="password" aria-label="Show password" data-testid="register-toggle-password">Show</button>
+          </div>
+          <div class="strength" aria-hidden="true"><span id="strength-bar"></span></div>
+          <p class="field-hint" id="strength-label" data-testid="register-strength">Use 8+ characters with letters and numbers.</p>
+          <p class="field-error" id="password-error" data-testid="register-password-error"></p>
+        </div>
+
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <input type="password" id="confirm" name="confirm" placeholder="Re-enter your password" autocomplete="new-password" data-testid="register-confirm" />
+          <p class="field-error" id="confirm-error" data-testid="register-confirm-error"></p>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" id="terms" name="terms" data-testid="register-terms" />
+          <span>I agree to the Terms of Service</span>
+        </label>
+        <p class="field-error" id="terms-error" data-testid="register-terms-error"></p>
+
+        <button type="submit" class="btn-primary btn-block" id="register-submit" data-testid="register-submit">Create account</button>
+      </form>
+
+      <p class="auth-switch">Already have an account? <a href="login.html" id="go-login" data-testid="go-login">Sign in</a></p>
+    </div>
+  </main>
+
+  <script src="auth-page.js"></script>
+</body>
+</html>

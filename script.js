@@ -1,5 +1,7 @@
 // ---------- State ----------
-const STORAGE_KEY = "taskflow.tasks";
+const currentUser = window.Auth?.currentUser();
+// Tasks are stored per signed-in user
+const STORAGE_KEY = currentUser ? `taskflow.tasks.${currentUser.email}` : "taskflow.tasks";
 const THEME_KEY = "taskflow.theme";
 
 const store = {
@@ -268,6 +270,16 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "/" && document.activeElement.tagName !== "INPUT" && !document.activeElement.isContentEditable) {
     e.preventDefault(); input.focus();
   }
+});
+
+// Signed-in user + logout
+if (currentUser) {
+  $("#user-name").textContent = currentUser.name;
+  $("#user-email").textContent = currentUser.email;
+  $("#user-avatar").textContent = currentUser.name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+}
+$("#logout").addEventListener("click", () => {
+  Auth.logout();
 });
 
 // ---------- Init ----------

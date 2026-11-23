@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <script src="auth.js"></script>
+  <script>Auth.requireAuth();</script>
 </head>
 <body>
   <div class="app">
@@ -54,6 +57,17 @@
           <p class="progress-title">Daily progress</p>
           <p class="progress-sub" id="progress-sub">0 of 0 done</p>
         </div>
+      </div>
+
+      <div class="user-card" data-testid="user-card">
+        <div class="avatar" id="user-avatar">?</div>
+        <div class="user-info">
+          <p class="user-name" id="user-name" data-testid="user-name"></p>
+          <p class="user-email" id="user-email" data-testid="user-email"></p>
+        </div>
+        <button class="logout-btn" id="logout" title="Sign out" aria-label="Sign out" data-testid="logout">
+          <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        </button>
       </div>
 
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
